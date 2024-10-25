@@ -3,6 +3,9 @@ using Azure.Data.Tables;
 
 namespace AzureSampleContainerInfo
 {
+    /// <summary>
+    /// Container data stored in Azure Table storage.
+    /// </summary>
     public class Container : ITableEntity
     {
         public string PartitionKey { get; set; } = "Containers";
