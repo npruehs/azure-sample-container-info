@@ -7,11 +7,15 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureSampleContainerInfo
 {
-    public class HttpExample
+    /// <summary>
+    /// Fetches container data from Azure Queue Storage for persisting it in Azure Table Storage, and
+    /// provides a REST API for accessing container data in Azure Table Storage.
+    /// </summary>
+    public class ContainerFunctions
     {
-        private readonly ILogger<HttpExample> _logger;
+        private readonly ILogger<ContainerFunctions> _logger;
 
-        public HttpExample(ILogger<HttpExample> logger)
+        public ContainerFunctions(ILogger<ContainerFunctions> logger)
         {
             _logger = logger;
         }
