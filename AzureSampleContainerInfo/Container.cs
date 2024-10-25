@@ -6,23 +6,15 @@ namespace AzureSampleContainerInfo
     public class Container : ITableEntity
     {
         public string PartitionKey { get; set; } = "Containers";
-        public string RowKey { get; set; }
+        public string RowKey { get; set; } = $"{Guid.NewGuid()}";
+
         public DateTimeOffset? Timestamp { get; set; }
         public ETag ETag { get; set; } = ETag.All;
 
-        public string ContainerId { get; set; }
+        public string ContainerId { get; set; } = string.Empty;
 
-        public string IsoCode { get; set; }
+        public string IsoCode { get; set; } = string.Empty;
 
         public ContainerStatus Status { get; set; }
-
-        public Container(string containerId, string isoCode, ContainerStatus status)
-        {
-            RowKey = containerId;
-
-            ContainerId = containerId;
-            IsoCode = isoCode;
-            Status = status;
-        }
     }
 }
