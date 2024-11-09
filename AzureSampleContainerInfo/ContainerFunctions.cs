@@ -13,6 +13,9 @@ namespace AzureSampleContainerInfo
     /// </summary>
     public class ContainerFunctions
     {
+        private static readonly TableServiceClient serviceClient = new("UseDevelopmentStorage=true");
+        private static readonly TableClient client = serviceClient.GetTableClient("Containers");
+
         private readonly ILogger<ContainerFunctions> _logger;
 
         public ContainerFunctions(ILogger<ContainerFunctions> logger)
@@ -23,12 +26,6 @@ namespace AzureSampleContainerInfo
         [Function("SaveContainer")]
         public async Task SaveContainer([QueueTrigger("container-changed-messages")] ContainerDto dto)
         {
-            TableServiceClient serviceClient = new("UseDevelopmentStorage=true");
-
-            TableClient client = serviceClient.GetTableClient(
-                tableName: "Containers"
-            );
-
             Response response = await client.UpsertEntityAsync(
                 entity: new Container
                 {
@@ -44,12 +41,6 @@ namespace AzureSampleContainerInfo
         [Function("GetContainer")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = "containers/{id}")] HttpRequest req, string id)
         {
-            TableServiceClient serviceClient = new("UseDevelopmentStorage=true");
-
-            TableClient client = serviceClient.GetTableClient(
-                tableName: "Containers"
-            );
-
             NullableResponse<Container> entity = await client.GetEntityAsync<Container>(
                 partitionKey: "Containers",
                 rowKey: id
