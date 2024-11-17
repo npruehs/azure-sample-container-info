@@ -13,7 +13,7 @@ namespace AzureSampleContainerInfo
     /// </summary>
     public class ContainerFunctions
     {
-        private static readonly TableServiceClient serviceClient = new("UseDevelopmentStorage=true");
+        private static readonly TableServiceClient serviceClient = new(Environment.GetEnvironmentVariable("AzureWebJobsStorage", EnvironmentVariableTarget.Process));
         private static readonly TableClient client = serviceClient.GetTableClient("Containers");
 
         private readonly ILogger<ContainerFunctions> _logger;
