@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace AzureSampleContainerInfo
+namespace AzureSampleContainerInfo.V1
 {
     /// <summary>
     /// Fetches container data from Azure Queue Storage for persisting it in Azure Table Storage, and
@@ -55,7 +55,7 @@ namespace AzureSampleContainerInfo
                 var container = entity.Value;
 
                 var dto = new ContainerDto
-                { 
+                {
                     ContainerId = container.ContainerId,
                     IsoCode = container.IsoCode,
                     Status = container.Status

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AzureSampleContainerInfo
+namespace AzureSampleContainerInfo.V1
 {
     /// <summary>
     /// Container data transmitted over the wire, e.g. from Azure Queue Storage or as an HTTP response.
