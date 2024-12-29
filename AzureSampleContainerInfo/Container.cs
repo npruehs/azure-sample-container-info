@@ -19,5 +19,7 @@ namespace AzureSampleContainerInfo
         public string IsoCode { get; set; } = string.Empty;
 
         public ContainerStatus Status { get; set; }
+
+        public string? ContainerOperatorId { get; set; }
     }
 }

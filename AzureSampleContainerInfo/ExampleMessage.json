@@ -1,5 +1,6 @@
 {
   "ContainerId": "TEST1234567",
   "IsoCode": "22G1",
-  "Status": "ANNOUNCED"
+  "Status": "ANNOUNCED",
+  "ContainerOperatorId":  "HL"
 }
