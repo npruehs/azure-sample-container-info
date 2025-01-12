@@ -67,3 +67,25 @@ in turn provides simple, but weak protection in form of
 options such as [securing the API through Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad).
 
 
+## Cost Management
+
+For estimating the monthly costs of the application, we're considering the following assumtions:
+
+* 10,000 container status updates per day (300,000 per month)
+* 50,000 container info requests per day (1,500,000 per month)
+* 20,000 containers to store data about, 10 kB per container (200 MB storage)
+
+Even when generously rounding up
+
+* storage capacity from 200 MB to 5 GB
+* stroage transactions from 1,800,000 to 5,000,000 (= 500 transaction units)
+* enqueue operations from 300,000 to 600,000 (billed in 10,000s)
+* dequeue operations from 300,000 to 2,000,000 (billed in 10,000s) to account for retries, etc.
+
+we can use the official [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator) to end up with
+a cost estimate of less than 10 $/month:
+
+![Cost Estimate](CostEstimate.png)
+
+If we're constantly observing significantly higher loads, we can reserve capacity for Azure Functions to further reduce
+these costs.
