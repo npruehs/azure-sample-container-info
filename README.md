@@ -89,3 +89,11 @@ a cost estimate of less than 10 $/month:
 
 If we're constantly observing significantly higher loads, we can reserve capacity for Azure Functions to further reduce
 these costs.
+
+## Deployment
+
+We can use [Bicep](AzureSampleContainerInfo.bicep) to deploy the application, which allows for repeatable results across
+staging and production environments, orchestration of the deployment of related resources, and is more concise and
+easier to read than most alternatives.
+
+![Bicep](Bicep.png)
