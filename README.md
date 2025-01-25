@@ -97,3 +97,24 @@ staging and production environments, orchestration of the deployment of related 
 easier to read than most alternatives.
 
 ![Bicep](Bicep.png)
+
+Then, we can use [GitHub Actions](.github/workflows/windows-dotnet-functionapp-on-azure.yml) to automatically deploy
+any code changes to our staging environment.
+
+## Monitoring
+
+We recommend [sending function app logs to Azure Log Analytics](https://learn.microsoft.com/en-us/azure/azure-functions/monitor-functions?tabs=portal#azure-monitor-resource-logs) for diagnosing development and live issues. Note that
+[it can take up to 90 minutes](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings#time-before-telemetry-gets-to-destination)
+for your first logs to arrive.
+
+We're also deploying an Application Insights instance to be able to monitor important metrics such as request counts,
+response times or failure rates.
+
+![Application Insights](ApplicationInsights.png)
+
+Finally, we recommend setting up the following types of alerts to get notified of any unusual and potentially undesired
+behaviour, and ensure security and reliabilty for your application:
+
+* [Azure Monitor alerts](https://learn.microsoft.com/en-us/azure/azure-functions/monitor-functions?tabs=portal#alerts) (e.g. for unusually high request counts)
+* Security alerts in Microsoft Defender for Cloud for your subscription
+* Azure Service Health alerts for your subscription
