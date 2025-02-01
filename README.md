@@ -35,6 +35,8 @@ is responsible for the data stored in the cloud, and who can access it, and how 
 * **High availability**: The application is available when needed.
 * **Scalability**: Compute and storage resources are automatically adjusted to meet demand.
 * **Reliability**: The application recovers from failures and continues to function.
+* **Security**: The cloud provider takes care of patches and maintenance, and is well suited to handle things like DDoS attacks.
+* **Manageability**: Resources can be deployed based on preconfigured templates, and the organization is aware of performance in real time due to automatic alerts based on configured metrics.
 
 ## Management Infrastructure
 
