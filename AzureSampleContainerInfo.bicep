@@ -12,6 +12,14 @@ param storageAccountName string = 'storage${uniqueString(resourceGroup().id)}'
 param apiManagementPublisherEmail string
 param apiManagementPublisherName string
 
+param resourceTags object = {
+  AppName: resourceGroup().tags.AppName
+  CostCenter: resourceGroup().tags.CostCenter
+  Owner: resourceGroup().tags.Owner
+  Environment: resourceGroup().tags.Environment
+  Impact: resourceGroup().tags.Impact
+}
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: storageAccountName
   location: location
@@ -23,6 +31,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
     minimumTlsVersion: 'TLS1_2'
     defaultToOAuthAuthentication: true
   }
+  tags: resourceTags
 }
 
 resource hostingPlan 'Microsoft.Web/serverfarms@2024-04-01' = {
@@ -32,6 +41,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2024-04-01' = {
     name: 'Y1'
     tier: 'Dynamic'
   }
+  tags: resourceTags
 }
 
 resource functionApp 'Microsoft.Web/sites@2024-04-01' = {
@@ -83,6 +93,7 @@ resource functionApp 'Microsoft.Web/sites@2024-04-01' = {
     }
     httpsOnly: true
   }
+  tags: resourceTags
 }
 
 resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
@@ -92,6 +103,7 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
   properties: {
     Application_Type: 'web'
   }
+  tags: resourceTags
 }
 
 resource apiManagement 'Microsoft.ApiManagement/service@2024-05-01' = {
@@ -105,4 +117,5 @@ resource apiManagement 'Microsoft.ApiManagement/service@2024-05-01' = {
     publisherEmail: apiManagementPublisherEmail
     publisherName: apiManagementPublisherName
   }
+  tags: resourceTags
 }

@@ -78,7 +78,6 @@ in turn provides simple, but weak protection in form of
 [API keys](https://learn.microsoft.com/en-us/azure/api-management/api-management-subscriptions), as well as stronger
 options such as [securing the API through Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad).
 
-
 ## Cost Management
 
 For estimating the monthly costs of the application, we're considering the following assumtions:
@@ -109,6 +108,14 @@ staging and production environments, orchestration of the deployment of related 
 easier to read than most alternatives.
 
 ![Bicep](Documentation/Bicep.png)
+
+The Bicep file automatically applies the following tags of the resource group to all created resources for convenience:
+
+* _AppName_: Name of the application that the resource is part of (e.g. "azure-sample-container-info").
+* _CostCenter_: Internal cost center code (e.g. "T1").
+* _Owner_: Name of the business owner who's responsible for the resource (e.g. "Nick Prühs").
+* _Environment_: Environment name (e.g. "Development", "Test", "Production").
+* _Impact_: How important the resource is to business operations (e.g. "Low", "High", "Critical").
 
 Then, we can use [GitHub Actions](.github/workflows/windows-dotnet-functionapp-on-azure.yml) to automatically deploy
 any code changes to our staging environment.
