@@ -11,7 +11,7 @@ they've arrived or departed.
 
 This goal is achieved as follows:
 
-![Architecture](Architecture.png)
+![Architecture](Documentation/Architecture.png)
 
 1. When the status of a container is updated at the facility, the terminal operating system sends a message to Azure Queue Storage.
 2. The new message triggers an Azure Function which consumes the message and stores the new container status in Azure Table Storage.
@@ -97,7 +97,7 @@ Even when generously rounding up
 we can use the official [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator) to end up with
 a cost estimate of less than 10 $/month:
 
-![Cost Estimate](CostEstimate.png)
+![Cost Estimate](Documentation/CostEstimate.png)
 
 If we're constantly observing significantly higher loads, we can reserve capacity for Azure Functions to further reduce
 these costs.
@@ -108,7 +108,7 @@ We can use [Bicep](AzureSampleContainerInfo.bicep) to deploy the application, wh
 staging and production environments, orchestration of the deployment of related resources, and is more concise and
 easier to read than most alternatives.
 
-![Bicep](Bicep.png)
+![Bicep](Documentation/Bicep.png)
 
 Then, we can use [GitHub Actions](.github/workflows/windows-dotnet-functionapp-on-azure.yml) to automatically deploy
 any code changes to our staging environment.
@@ -122,7 +122,7 @@ for your first logs to arrive.
 We're also deploying an Application Insights instance to be able to monitor important metrics such as request counts,
 response times or failure rates.
 
-![Application Insights](ApplicationInsights.png)
+![Application Insights](Documentation/ApplicationInsights.png)
 
 Finally, we recommend setting up the following types of alerts to get notified of any unusual and potentially undesired
 behaviour, and ensure security and reliabilty for your application:
