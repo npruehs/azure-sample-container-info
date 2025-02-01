@@ -7,6 +7,18 @@ Example architecture of a logistics web application in the Microsoft Azure cloud
 Building a REST API that provides information about the current status of containers, such as their ISO code, or whether
 they've arrived or departed.
 
+## Architecture
+
+This goal is achieved as follows:
+
+![Architecture](Architecture.png)
+
+1. When the status of a container is updated at the facility, the terminal operating system sends a message to Azure Queue Storage.
+2. The new message triggers an Azure Function which consumes the message and stores the new container status in Azure Table Storage.
+3. Clients (such as container operators) can access a REST API that is published via Azure API Management.
+4. Azure API Management calls an Azure Function.
+5. The Azure Function retrieves and returns the container status from Azure Table Storage.
+
 ## Characteristics
 
 `azure-sample-container-info` is deployed to Microsoft Azure, which is a _public cloud_: There's no upfront costs for
