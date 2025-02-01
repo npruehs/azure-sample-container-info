@@ -22,7 +22,7 @@ This goal is achieved as follows:
 ## Characteristics
 
 `azure-sample-container-info` is deployed to Microsoft Azure, which is a _public cloud_: There's no upfront costs for
-providing the infrastructure for deploying the application. The applications can be quickly provisioned and
+providing the infrastructure for deploying the application. The application can be quickly provisioned and
 deprovisioned if necessary, and the owning organization pays only for what they use.
 
 It's entirely based on _Platform as a Service_: The cloud provider maintains the physical infrastructure,
@@ -64,7 +64,7 @@ from a facility, even if the container info API is unavailable.
 
 Storage is still relying on _locally redundant storage (LRS)_, which replicates the data three times within a single
 data center, providing at least 11 nines of durability (99.999999999%) of objects over a given year. It protects the
-data against unexpected server rack and drive failures, and is still the the lowest-cost redundancy option.
+data against unexpected server rack and drive failures, and is still the lowest-cost redundancy option.
 
 ## Compute Services
 
@@ -82,7 +82,7 @@ options such as [securing the API through Microsoft Entra ID](https://learn.micr
 
 ## Cost Management
 
-For estimating the monthly costs of the application, we're considering the following assumtions:
+For estimating the monthly costs of the application, we're considering the following assumptions:
 
 * 10,000 container status updates per day (300,000 per month)
 * 50,000 container info requests per day (1,500,000 per month)
@@ -91,7 +91,7 @@ For estimating the monthly costs of the application, we're considering the follo
 Even when generously rounding up
 
 * storage capacity from 200 MB to 5 GB
-* stroage transactions from 1,800,000 to 5,000,000 (= 500 transaction units)
+* storage transactions from 1,800,000 to 5,000,000 (= 500 transaction units)
 * enqueue operations from 300,000 to 600,000 (billed in 10,000s)
 * dequeue operations from 300,000 to 2,000,000 (billed in 10,000s) to account for retries, etc.
 
@@ -134,7 +134,7 @@ response times or failure rates.
 ![Application Insights](Documentation/ApplicationInsights.png)
 
 Finally, we recommend setting up the following types of alerts to get notified of any unusual and potentially undesired
-behaviour, and ensure security and reliabilty for your application:
+behavior, and ensure security and reliability for your application:
 
 * [Azure Monitor alerts](https://learn.microsoft.com/en-us/azure/azure-functions/monitor-functions?tabs=portal#alerts) (e.g. for unusually high request counts)
 * Security alerts in Microsoft Defender for Cloud for your subscription
